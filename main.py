@@ -1,30 +1,19 @@
 from fastapi import FastAPI
-from pydantic import EmailStr, BaseModel
+from items_views import router as items_router
+from users.views import router as users_router
 
 
 app = FastAPI(
     title="study of fastapi"
 )
+app.include_router(items_router)
+app.include_router(users_router)
 
 
 @app.get("/")
 def get():
     return {
         "message": "Hello fastapi!"
-    }
-
-
-class CreateUser(BaseModel):
-    email: EmailStr
-    user: str
-    password: str
-
-
-@app.post('/user/')
-def users(user: CreateUser):
-    return {
-        'message': 'succes',
-        "email": user.email
     }
 
 
