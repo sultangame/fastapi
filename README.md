@@ -1,2 +1,2 @@
-#Learning fastapi and new patterns of web-applications
+# learning fastapi
 
